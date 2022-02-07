@@ -1,0 +1,51 @@
+<!--Form User Dictionary-->
+<main class="container mt-5">
+    <div class="d-flex justify-content-between p-3 my-3 text-white bg-purple rounded shadow-sm">
+        <div class="d-block">
+        <img class="me-3" src="/logo/bootstrap-logo.svg" alt="" width="48" height="38">
+            <small><a href="/dictionaryuser/create" class="btn btn-light btn mt-1">Add Words</a></small>
+            </div>
+        <form class="d-flex">
+            <input class="form-control me-2" name="search" value="<%=searchQuery%>" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-success" type="submit">Search</button>
+        </form>
+    </div>
+    <div class="my-3 p-3 bg-body rounded shadow-sm">
+        <h6 class="border-bottom pb-2 mb-0">User words</h6>
+        <div class="d-flex text-muted pt-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="d-flex justify-content-evenly">
+
+                            <table class="table table-hover">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <%for(let index in data){%>
+                                    <tr>
+                                        <th scope="row"><%= +index+1 %></th>
+                                        <td><%= data[index]['title']%></td>
+                                        <td><%= data[index]['description']%></td>
+                                        <td>
+                                          <a href="/dictionary/add/<%= data[index]['id']%>" class="btn btn-success btn-sm">➕ Add word</a>
+                                          <a href="/dictionaryuser/edit/<%= data[index]['id']%>" class="btn btn-warning btn-sm">🖋️ Edit</a>
+                                          <a href="/dictionaryuser/delete/<%= data[index]['id']%>" class="btn btn-danger btn-sm">🗑️ Delete</a>
+                                        </td>
+                                    </tr>
+                                <%}%>
+                                </tbody>
+                              </table>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+</main>
+
+

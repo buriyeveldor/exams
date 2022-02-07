@@ -1,0 +1,21 @@
+<div class="row mt-5">
+    <div class="col-6 offset-3">
+        <form method="post" action="/admin/user/edit">
+            <input type="text" name="id" hidden value="<%= data['id']%>">
+            <div class="mb-3">
+                <label for="fullname" class="form-label">Fullname</label>
+                <input type="text" class="form-control" id="fullname" value="<%= data['fullname']%>" name="fullname">
+            </div>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" value="<%= data['username']%>">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="text" class="form-control" id="password" name="password" value="<%= data['password']%>">
+            </div>
+            <button type="submit" class="btn btn-outline-success">Submit</button>
+        </form>
+    </div>
+</div>
+

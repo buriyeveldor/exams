@@ -1,0 +1,20 @@
+<div class="container mt-5">
+<div class="row">
+    <% for(let item of data) {%>
+    <div class="col-3">
+        <div class="card m-1">
+            <img src="<%=item['imgUrl']%>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%=item['title']%></h5>
+              <p class="card-text"><%=item['description']%></p>
+              <a href="/post/<%=item['id']%>" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+<% }%>
+</div>
+</div>
+
+
+
+

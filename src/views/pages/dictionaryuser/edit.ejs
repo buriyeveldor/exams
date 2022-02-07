@@ -1,0 +1,17 @@
+<div class="row mt-5">
+    <div class="col-6 offset-3">
+        <form method="post" action="/dictionaryuser/edit">
+            <input type="text" name="id" hidden value="<%= data['id']%>">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" value="<%= data['title']%>" name="title">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" id="description" name="description" value="<%= data['description']%>">
+            </div>
+            <button type="submit" class="btn btn-outline-success">Submit</button>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,68 @@
+[
+    {
+        "id": 1,
+        "title": "birinchi post",
+        "description": "ma'lumot chiqdi",
+        "imgUrl": "/25.jpg"
+    },
+    {
+        "id": 2,
+        "title": "ikkinchi post",
+        "description": "ma'lumot chiqdi",
+        "imgUrl": "/25.jpg"
+    },
+    {
+        "id": 3,
+        "title": "uchinchi post",
+        "description": "ma'lumot chiqdi",
+        "imgUrl": "/25.jpg"
+    },
+    {
+        "id": 4,
+        "title": "ddsd",
+        "description": "dszdzs",
+        "imgUrl": "/1643644353799.jpg"
+    },
+    {
+        "id": 5,
+        "title": "cdsc zd",
+        "description": "cdzcz",
+        "imgUrl": "/1643808462885.png"
+    },
+    {
+        "id": 6,
+        "title": "dasd",
+        "description": "dsad",
+        "imgUrl": "/1643971894672.png"
+    },
+    {
+        "id": 7,
+        "title": "dsa",
+        "description": "dasd",
+        "imgUrl": "/1643971898524.png"
+    },
+    {
+        "id": 8,
+        "title": "dsa",
+        "description": "dsad",
+        "imgUrl": "/1644002680244.jpeg"
+    },
+    {
+        "id": 9,
+        "title": "dffdsfs",
+        "description": "fdsfsdfds",
+        "imgUrl": "/1644074438553.jpg"
+    },
+    {
+        "id": 10,
+        "title": "dsda",
+        "description": "dsadas",
+        "imgUrl": "/1644146824248.jpg"
+    },
+    {
+        "id": 11,
+        "title": "ggfg",
+        "description": "gdsg",
+        "imgUrl": "/1644147130239.jpg"
+    }
+]
