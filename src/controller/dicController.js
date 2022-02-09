@@ -31,7 +31,6 @@ const addWords = async (req, res)=>{
         await fs.writeFile(path.join(process.cwd(), 'src', 'database', 'dictionary.json'), JSON.stringify(words, null, 4))
 
         return {ok: true, data: newWord};
-    // })
 }
 
 //VIEW WORDS

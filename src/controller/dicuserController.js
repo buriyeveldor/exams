@@ -6,6 +6,10 @@ async function loadWords(){
     let word = await fs.readFile(path.join(process.cwd(), 'src', 'database', 'dictionaryuser.json'), 'utf-8' )
     return word ? JSON.parse(word) : []
 }
+async function loadAdminWords(){
+    let word = await fs.readFile(path.join(process.cwd(), 'src', 'database', 'dictionary.json'), 'utf-8' )
+    return word ? JSON.parse(word) : []
+}
 
 //ADD POSTS
 const addWords = async (req, res)=>{
@@ -133,27 +137,25 @@ const addWordGET = async (req, res) => {
     let id = req.params.id
     if(id){
         let userWords = await loadWords()
+        let adminWords = await loadAdminWords()
+        console.log(adminWords);
         let userWord = userWords.find(el => el['id'] == id)
-        return res.render('pages/dictionaryuser/edit', {layout: 'layout/dic_layout', data:userWord})
-    }
-    return res.redirect('/dictionary')
-}
-const addWordPOST =  async (req, res) => {
-    console.log(req.body)
-    const {title, description, id} = req.body
-    if(title && description && id){
-        let userWords = await loadWords()
-        for (let index in words) {
+        for(let index in userWords){
             if(userWords[index]['id'] == id){
-                userWords[index]['createdAt'] = Date.now()
-                userWords[index]['title'] = title
-                userWords[index]['description'] = description
-                break
+                userWords.splice(index, 1)
+                    break
+                }
             }
-        }
-        userWords.push(userWords)
-        await fs.writeFile(path.join(process.cwd(), 'src','database', 'dictionary.json'), JSON.stringify(userWords, null, 4))
-        return res.redirect('/dictionary')
+            let newAdminWord={
+                id: adminWords.length ? adminWords[adminWords.length-1].id+1 : 1,
+                title:userWord['title'],
+                description:userWord['description'],
+                createdAt:Date.now()
+            }
+            adminWords.push(newAdminWord)
+            await fs.writeFile(path.join(process.cwd(), 'src','database', 'dictionary.json'), JSON.stringify(adminWords, null, 4))
+            await fs.writeFile(path.join(process.cwd(), 'src','database', 'dictionaryuser.json'), JSON.stringify(userWords, null, 4))
+            return res.redirect('/dictionary')
     }
     return res.redirect('/dictionary')
 }
@@ -166,6 +168,5 @@ module.exports = {
     editWordPOST,
     editWordGET,
     deleteWordGET,
-    addWordGET,
-    addWordPOST
+    addWordGET
 }
