@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const app = express()
-salom
+
 
 app.set('layout', 'layout/main_layout')
 app.set('view engine', 'ejs')
