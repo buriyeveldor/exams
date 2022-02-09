@@ -7,7 +7,10 @@ async function loadWords(){
     return word ? JSON.parse(word) : []
 }
 
-
+async function loadAdminWords(){
+    let word = await fs.readFile(path.join(process.cwd(), 'src', 'database', 'dictionary.json'), 'utf-8' )
+    return word ? JSON.parse(word) : []
+}
 //ADD POSTS
 const addWords = async (req, res)=>{
     console.log(req.files);
@@ -27,21 +30,22 @@ const addWords = async (req, res)=>{
         words.push(newWord)
         await fs.writeFile(path.join(process.cwd(), 'src', 'database', 'dictionaryuser.json'), JSON.stringify(words, null, 4))
 
-        
         return {ok: true, data: newWord};
+    // })
 }
 
 //VIEW POSTS
 const wordIndexView = async (req, res)=>{
     const {search} = req.query
-    let words = await loadWords()
+    let words = await loadAdminWords()
     let wordArray = [];
     let searchQuery= [];
     if(search){
         searchQuery = search;
         for(const item of words){
-            if(item['title'].includes(search)){
+            if(item['title'].includes(search) || item['description'].includes(search)){
                 wordArray.push(item)
+
             }
         }
     }else{
@@ -67,7 +71,7 @@ const wordAddViewGet = async (req, res)=>{
     if(ok){
         return res.redirect('/')
     }
-    // return res.render('pages/vdictionaryuser/create', {layout: 'layout/vdic_layout', ok:false, message: "", method: 'GET'})
+    return res.render('pages/vdictionaryuser/create', {layout: 'layout/vdic_layout', ok:false, message: "", method: 'GET'})
 
 }
 const wordAddViewPost = async (req, res)=>{
@@ -76,7 +80,6 @@ const wordAddViewPost = async (req, res)=>{
     if(ok){
         return res.redirect('/')
     }
-    // return res.render('pages/vdictionaryuser/create', {ok, method: 'POST'})
     return res.render('pages/vdictionaryuser/create', {layout: 'layout/vdic_layout', ok, method: 'POST'})
 }
 
